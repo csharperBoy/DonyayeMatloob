@@ -1,18 +1,18 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Vazirmatn } from "next/font/google";
 import { Layout, FixedPlugin } from "@/components";
 
-const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+const vazir = Vazirmatn({
+  subsets: ["arabic"],
+  weight: ["400", "500", "700"],
+  variable: "--font-vazir",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "NextJS Tailwind Campaign Page",
-  description:
-    "Introducing Tailwind Campaign Page, an all-inclusive and visually captivating campaign landing page template built on the foundation of Tailwind CSS and Material Tailwind.",
+  title: "موسسه روانشناسی دنیای مطلوب",
+  description: "ارائه خدمات روانشناسی و مشاوره آنلاین",
 };
 
 export default function RootLayout({
@@ -21,16 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl" className={`${vazir.variable} font-sans`}>
       <head>
-        <script
-          defer
-          data-site="YOUR_DOMAIN_HERE"
-          src="https://api.nepcha.com/js/nepcha-analytics.js"
-        ></script>
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
       </head>
-      <body className={roboto.className}>
+      <body className="font-vazir">
         <Layout>
           {children}
           <FixedPlugin />

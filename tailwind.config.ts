@@ -6,7 +6,21 @@ const config: Config = withMT({
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
+  theme: {
+    fontFamily: {
+      vazir: ["Vazirmatn", "sans-serif"], // فونت اصلی منوها
+      yekan: ["Yekan", "sans-serif"], // فونت عنوان سایت
+      iransans: ["IRANSans", "sans-serif"], // فونت دکمه‌ها
+    },
+    extend: {
+      colors: {
+        purple: {
+          600: '#7e22ce', // رنگ بنفش اصلی
+          700: '#6b21a8',
+        }
+      }
+    },
+  },
   plugins: [],
 });
 
