@@ -5,8 +5,8 @@ export * from "./layout";
 export * from "./page";
 export * from "./faq";
 export * from "./psychologists-team";
-export * from "./carousel-features";
+export * from "./therapy-carousel";
 export * from "./online-courses";
-export * from "./get-your-book-from-us";
+export * from "./appointment-request";
 
 

@@ -6,8 +6,8 @@ import Hero from "./hero";
 import TopBookCategories from "./therapy-services";
 import BackToSchoolBooks from "./online-courses";
 import OtherBookOffers from "./psychologists-team";
-import CarouselFeatures from "./carousel-features";
-import GetYourBookFromUs from "./get-your-book-from-us";
+import CarouselFeatures from "./therapy-carousel";
+import GetYourBookFromUs from "./appointment-request";
 import Faq from "./faq";
 
 export default function Campaign() {
