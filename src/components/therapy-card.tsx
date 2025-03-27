@@ -4,7 +4,8 @@ import {
   Typography, 
   Card, 
   CardBody, 
-  CardHeader 
+  CardHeader,
+  Button
 } from "@material-tailwind/react";
 import { 
   ClockIcon, 
@@ -12,14 +13,12 @@ import {
   CheckBadgeIcon 
 } from "@heroicons/react/24/outline";
 
-// تعریف props های مشترک
 const sharedProps = {
   placeholder: undefined,
   onPointerEnterCapture: undefined,
   onPointerLeaveCapture: undefined
 };
 
-// تعریف نوع‌ها
 type ServiceType = 'مشاوره' | 'دوره آنلاین' | 'کارگاه' | 'دوره آفلاین';
 
 interface TherapyCardProps {
@@ -46,7 +45,6 @@ export function TherapyCard({
   hasCertificate = false
 }: TherapyCardProps) {
   
-  // رنگ‌بندی خودکار بر اساس نوع خدمت
   const typeColors = {
     'مشاوره': 'bg-blue-100 text-blue-800',
     'دوره آنلاین': 'bg-purple-100 text-purple-800',
@@ -55,19 +53,19 @@ export function TherapyCard({
   };
 
   return (
-    <Card color="transparent" shadow={false} {...sharedProps}>
-      <CardHeader floated={false} className="mx-0 mt-0 mb-6" {...sharedProps}>
+    <Card className="h-full flex flex-col border border-gray-200 shadow-sm" {...sharedProps}>
+      <CardHeader floated={false} className="relative h-64 w-full m-0" {...sharedProps}>
         <Image
-          width={768}
-          height={768}
           src={img}
           alt={title}
-          className="h-full w-full scale-[1.1] object-cover object-center"
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority
         />
       </CardHeader>
       
-      <CardBody className="p-0" {...sharedProps}>
+      <CardBody className="flex-grow p-4" {...sharedProps}>
         <div className="flex flex-wrap gap-2 mb-3">
           <span className={`text-xs px-2 py-1 rounded-full ${typeColors[serviceType]}`}>
             {serviceType}
@@ -79,7 +77,7 @@ export function TherapyCard({
 
         <Typography 
           as="h3"
-          className="mb-2 text-xl font-bold text-gray-900"
+          className="mb-2 text-lg font-bold text-gray-900"
           {...sharedProps}
         >
           {title}
@@ -87,13 +85,13 @@ export function TherapyCard({
         
         <Typography 
           as="p" 
-          className="mb-4 text-gray-600"
+          className="mb-4 text-gray-600 text-sm"
           {...sharedProps}
         >
           {desc}
         </Typography>
 
-        <div className="space-y-2 text-sm">
+        <div className="mt-auto space-y-2 text-sm">
           <div className="flex items-center gap-2">
             <ClockIcon className="w-4 h-4 text-gray-500"/>
             <span>مدت: {duration}</span>
@@ -112,20 +110,21 @@ export function TherapyCard({
               <span>مدرک معتبر</span>
             </div>
           )}
-
-          {price && (
-            <div className="pt-3">
-              <Typography 
-                as="span"
-                className="text-lg font-bold text-purple-600"
-                {...sharedProps}
-              >
-                {price} تومان
-              </Typography>
-            </div>
-          )}
         </div>
       </CardBody>
+
+      {price && (
+        <div className="p-4 pt-0">
+          <Button 
+            size="sm"
+            color="purple"
+            fullWidth
+            {...sharedProps}
+          >
+            ثبت نام ({price} تومان)
+          </Button>
+        </div>
+      )}
     </Card>
   );
 }

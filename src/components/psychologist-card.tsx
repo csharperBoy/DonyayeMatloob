@@ -1,6 +1,24 @@
 import React from 'react';
 import Image from "next/image";
-import { Button, Typography } from "@material-tailwind/react";
+import { 
+  Typography, 
+  Card, 
+  CardBody, 
+  CardHeader,
+  Button,
+  Badge
+} from "@material-tailwind/react";
+import { 
+  CheckBadgeIcon,
+  AcademicCapIcon,
+  ClockIcon
+} from "@heroicons/react/24/outline";
+
+const sharedProps = {
+  placeholder: undefined,
+  onPointerEnterCapture: undefined,
+  onPointerLeaveCapture: undefined
+};
 
 interface PsychologistCardProps {
   image: string;
@@ -10,6 +28,7 @@ interface PsychologistCardProps {
   description: string;
   availableFor: string[];
   sessionPrice: string;
+  isOnline?: boolean;
 }
 
 export function PsychologistCard({
@@ -19,84 +38,97 @@ export function PsychologistCard({
   experience,
   description,
   availableFor,
-  sessionPrice
+  sessionPrice,
+  isOnline = false
 }: PsychologistCardProps) {
-  // تعریف props های مشترک برای Material Tailwind
-  const sharedProps = {
-    placeholder: undefined,
-    onPointerEnterCapture: undefined,
-    onPointerLeaveCapture: undefined
-  };
-
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-      <div className="relative h-60 w-full">
+    <Card className="h-full flex flex-col border border-gray-200 shadow-sm" {...sharedProps}>
+      <CardHeader floated={false} className="relative h-64 w-full m-0" {...sharedProps}>
         <Image
           src={image}
           alt={name}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
         />
-      </div>
+        {isOnline && (
+          <Badge
+            color="green"
+            className="absolute top-2 right-2"
+            {...sharedProps}
+          >
+            آنلاین
+          </Badge>
+        )}
+      </CardHeader>
       
-      <div className="p-6">
+      <CardBody className="flex-grow p-4" {...sharedProps}>
+        <div className="flex flex-wrap gap-2 mb-3">
+          <span className="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs">
+            {specialty}
+          </span>
+          <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs">
+            {experience} سال تجربه
+          </span>
+        </div>
+
         <Typography 
-          variant="h5" 
-          className="mb-2 text-gray-900 font-bold"
+          as="h3"
+          className="mb-2 text-lg font-bold text-gray-900"
           {...sharedProps}
         >
           {name}
         </Typography>
         
-        <div className="flex flex-wrap gap-2 mb-3">
-          <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium">
-            {specialty}
-          </span>
-          <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-medium">
-            {experience} سال سابقه
-          </span>
-        </div>
-
         <Typography 
+          as="p" 
           className="mb-4 text-gray-600 text-sm"
           {...sharedProps}
         >
           {description}
         </Typography>
 
-        <div className="mb-5 space-y-2">
-          {availableFor.map((item) => (
-            <div key={item} className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-              <Typography 
-                className="text-gray-700 text-sm"
-                {...sharedProps}
-              >
-                {item}
-              </Typography>
+        <div className="mt-auto space-y-3">
+          <div className="flex items-start gap-2">
+            <AcademicCapIcon className="w-4 h-4 mt-0.5 text-gray-500 flex-shrink-0"/>
+            <div className="flex flex-wrap gap-1">
+              {availableFor.map(item => (
+                <span 
+                  key={item}
+                  className="inline-block bg-gray-100 text-gray-800 px-2 py-0.5 rounded text-xs"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
-          ))}
+          </div>
+          
+          <div className="flex items-center gap-2 text-sm">
+            <ClockIcon className="w-4 h-4 text-gray-500"/>
+            <span>مدت جلسه: ۴۵ دقیقه</span>
+          </div>
         </div>
+      </CardBody>
 
-        <div className="flex items-center justify-between">
-          <Typography 
-            className="font-bold text-purple-600"
-            {...sharedProps}
-          >
-            جلسه: {sessionPrice} تومان
-          </Typography>
-          <Button 
-            size="sm"
-            color="purple"
-            className="font-medium"
-            {...sharedProps}
-          >
-            رزرو نوبت
-          </Button>
-        </div>
+      <div className="p-4 pt-0 flex items-center justify-between">
+        <Typography 
+          as="span"
+          className="font-bold text-purple-600 text-sm"
+          {...sharedProps}
+        >
+          {sessionPrice} تومان
+        </Typography>
+        <Button 
+          size="sm"
+          color="purple"
+          className="font-medium"
+          {...sharedProps}
+        >
+          رزرو نوبت
+        </Button>
       </div>
-    </div>
+    </Card>
   );
 }
 

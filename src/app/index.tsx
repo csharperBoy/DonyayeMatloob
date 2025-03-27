@@ -1,5 +1,5 @@
 
-export * from "./top-book-categories";
+export * from "./therapy-services";
 export * from "./hero";
 export * from "./layout";
 export * from "./page";

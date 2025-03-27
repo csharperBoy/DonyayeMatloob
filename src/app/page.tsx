@@ -3,7 +3,7 @@ import { Navbar, Footer } from "@/components";
 
 // sections
 import Hero from "./hero";
-import TopBookCategories from "./top-book-categories";
+import TopBookCategories from "./therapy-services";
 import BackToSchoolBooks from "./online-courses";
 import OtherBookOffers from "./psychologists-team";
 import CarouselFeatures from "./carousel-features";

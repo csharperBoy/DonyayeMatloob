@@ -1,48 +1,97 @@
 "use client";
+import React from 'react';
+import { Button, Tabs, TabsHeader, Tab, Typography } from "@material-tailwind/react";
+import TherapyCard from "@/components/therapy-card";
 
-import React from "react";
-import { Button, Tabs, TabsHeader, Tab } from "@material-tailwind/react";
-import TherapyCard from "@/components/therapy-card"; // توجه: import به صورت default
+const sharedProps = {
+  placeholder: undefined,
+  onPointerEnterCapture: undefined,
+  onPointerLeaveCapture: undefined
+};
 
-// تعریف نوع دوره‌ها
 type Course = {
   img: string;
-  serviceType: 'دوره آنلاین' | 'کارگاه';
-  category: string;
   title: string;
   desc: string;
+  serviceType: 'دوره آنلاین' | 'کارگاه' | 'دوره آفلاین';
+  category: string;
   duration: string;
-  sessions: number;
+  sessions?: number;
   price: string;
   hasCertificate: boolean;
 };
 
 const COURSES: Course[] = [
   {
-    img: "/image/courses/stress-management.jpg",
+    img: "/image/courses/1.jpg",
     serviceType: "دوره آنلاین",
     category: "مدیریت استرس",
     title: "کنترل استرس پیشرفته",
-    desc: "آموزش تکنیک‌های CBT برای مدیریت استرس روزمره",
+    desc: "آموزش تکنیک‌های CBT و ذهن‌آگاهی برای مدیریت استرس روزمره - مناسب برای افراد پراسترس و مدیران",
     duration: "8 ساعت",
     sessions: 4,
     price: "490,000",
     hasCertificate: true
   },
   {
-    img: "/image/courses/child-psychology.jpg",
+    img: "/image/courses/2.jpg",
     serviceType: "کارگاه",
-    category: "روانشناسی کودک",
+    category: "تربیت کودک",
     title: "پرورش فرزند شاد",
-    desc: "آموزش روش‌های تربیتی مبتنی بر روانشناسی مثبت‌نگر", 
+    desc: "آموزش روش‌های تربیتی مبتنی بر روانشناسی مثبت‌نگر برای والدین کودکان 3 تا 12 سال", 
     duration: "12 ساعت",
     sessions: 2,
     price: "650,000",
     hasCertificate: true
-  }
+  },
+  {
+    img: "/image/courses/3.jpg",
+    serviceType: "دوره آنلاین",
+    category: "روابط زناشویی",
+    title: "زندگی عاشقانه",
+    desc: "آموزش مهارت‌های ارتباطی و حل تعارض در روابط زناشویی - همراه با تمرینات عملی",
+    duration: "10 ساعت",
+    sessions: 5,
+    price: "580,000",
+    hasCertificate: true
+   }
+   //,
+  // {
+  //   img: "/image/courses/communication-skills.jpg",
+  //   serviceType: "دوره آفلاین",
+  //   category: "مهارت‌های ارتباطی",
+  //   title: "هنر ارتباط مؤثر",
+  //   desc: "تقویت مهارت‌های کلامی و غیرکلامی در روابط اجتماعی و کاری - شامل ویدیوهای آموزشی و تمرینات",
+  //   duration: "6 ساعت",
+  //   price: "390,000",
+  //   hasCertificate: false
+  // },
+  // {
+  //   img: "/image/courses/anxiety-workshop.jpg",
+  //   serviceType: "کارگاه",
+  //   category: "مدیریت استرس",
+  //   title: "غلبه بر اضطراب",
+  //   desc: "کارگاه عملی تکنیک‌های سریع کاهش اضطراب در موقعیت‌های مختلف زندگی",
+  //   duration: "4 ساعت",
+  //   sessions: 1,
+  //   price: "320,000",
+  //   hasCertificate: true
+  // },
+  // {
+  //   img: "/image/courses/parenting.jpg",
+  //   serviceType: "دوره آنلاین",
+  //   category: "تربیت کودک",
+  //   title: "نوجوان امروز",
+  //   desc: "راهکارهای عملی برای ارتباط مؤثر با نوجوانان و حل چالش‌های دوره بلوغ",
+  //   duration: "9 ساعت",
+  //   sessions: 3,
+  //   price: "520,000",
+  //   hasCertificate: true
+  // }
 ];
 
 const COURSE_CATEGORIES = [
+  "همه دوره‌ها",
   "مدیریت استرس",
   "روابط زناشویی",
   "تربیت کودک",
@@ -52,43 +101,55 @@ const COURSE_CATEGORIES = [
 export function OnlineCourses() {
   const [activeTab, setActiveTab] = React.useState(COURSE_CATEGORIES[0]);
 
+  const filteredCourses = activeTab === "همه دوره‌ها" 
+    ? COURSES 
+    : COURSES.filter(course => course.category === activeTab);
+
   return (
-    <section className="px-8 pt-20 pb-10">
-      <div className="container mx-auto mb-20 text-center">
-        <p className="mb-3 font-bold uppercase text-purple-500">
+    <section className="px-4 py-20 bg-white">
+      <div className="container mx-auto mb-16 text-center">
+        <Typography
+          variant="small"
+          color="purple"
+          className="mb-3 font-bold uppercase"
+          {...sharedProps}
+        >
           تا ۴۰٪ تخفیف ویژه
-        </p>
+        </Typography>
 
-        <h1 className="mb-2 text-4xl font-bold text-gray-900">
+        <Typography
+          variant="h2"
+          className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl"
+          {...sharedProps}
+        >
           دوره‌های تخصصی روانشناسی
-        </h1>
+        </Typography>
 
-        <p className="mx-auto w-full px-4 text-lg text-gray-600 lg:w-9/12">
+        <Typography
+          className="mx-auto max-w-2xl text-gray-600 text-lg"
+          {...sharedProps}
+        >
           ارائه جامع‌ترین دوره‌های آموزشی آنلاین با مدرک معتبر از موسسه دنیای مطلوب
-        </p>
+        </Typography>
 
-        <div className="mt-20 flex items-center justify-center">
-          <Tabs value={activeTab} className="w-full lg:w-8/12">
+        <div className="mt-16">
+          <Tabs value={activeTab} className="w-full mx-auto max-w-3xl">
             <TabsHeader
-              className="h-12 bg-transparent"
+              className="h-12 bg-gray-100"
               indicatorProps={{
                 className: "!bg-purple-500 rounded-lg",
               }}
-              placeholder={undefined}
-              onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined}
+              {...sharedProps}
             >
               {COURSE_CATEGORIES.map((category) => (
                 <Tab
                   key={category}
                   value={category}
-                  className={`!font-medium transition-all duration-300
-                    ${activeTab === category ? "text-white" : "text-gray-700"}
-                  `}
+                  className={`font-medium text-sm md:text-base ${
+                    activeTab === category ? "text-white" : "text-gray-700"
+                  }`}
                   onClick={() => setActiveTab(category)}
-                  placeholder={undefined}
-                  onPointerEnterCapture={undefined}
-                  onPointerLeaveCapture={undefined}
+                  {...sharedProps}
                 >
                   {category}
                 </Tab>
@@ -98,23 +159,22 @@ export function OnlineCourses() {
         </div>
       </div>
 
-      <div className="container mx-auto grid grid-cols-1 items-start gap-x-6 gap-y-20 md:grid-cols-2 xl:grid-cols-3">
-        {COURSES.map((course) => (
+      <div className="container mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 xl:gap-10">
+        {filteredCourses.map((course, index) => (
           <TherapyCard
-            key={`${course.title}-${course.category}`}
+            key={`course-${index}`}
             {...course}
           />
         ))}
       </div>
 
-      <div className="grid place-items-center">
+      <div className="container mx-auto mt-16 text-center">
         <Button
           variant="outlined"
           color="purple"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-          className="mt-32 font-iransans"
+          size="lg"
+          className="border-2"
+          {...sharedProps}
         >
           مشاهده همه دوره‌ها
         </Button>
