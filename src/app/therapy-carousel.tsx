@@ -32,7 +32,7 @@ export function TherapyCarousel() {
       title: "مجوزهای رسمی موسسه",
       description: "موسسه دنیای مطلوب دارای کلیه مجوزهای رسمی از مراجع ذیصلاح کشور",
       icon: <ShieldCheckIcon className="h-8 w-8 text-white" />,
-      image: "/image/carousel/1.jpg",
+      image: "/image/carousel/2.jpg",
       licenses: [
         "مجوز رسمی از سازمان نظام روانشناسی",
         "پروانه فعالیت از وزارت بهداشت",
@@ -43,7 +43,7 @@ export function TherapyCarousel() {
       title: "همکاری با مراکز معتبر",
       description: "همکاری با دانشگاه‌ها و مراکز علمی معتبر کشور در زمینه آموزش و پژوهش",
       icon: <BuildingLibraryIcon className="h-8 w-8 text-white" />,
-      image: "/image/carousel/1.jpg",
+      image: "/image/carousel/3.jpg",
       licenses: [
         "همکار دانشگاه تهران",
         "همکار دانشگاه علوم پزشکی",
@@ -125,7 +125,7 @@ export function TherapyCarousel() {
                   height={400}
                   src={item.image}
                   alt={item.title}
-                  className="object-cover"
+                  className="object-cover w-full h-full"
                   priority={index === 0}
                 />
               </div>
