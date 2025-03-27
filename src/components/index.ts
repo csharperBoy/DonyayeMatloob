@@ -6,4 +6,5 @@ export * from "./layout";
 export * from "./therapy-card";
 export * from "./feature-card";
 export * from "./category-card";
-export * from "./fixed-plugin";
+// این خط را کامنت یا حذف کنید:
+// export * from "./contact-float-button"; // این خط باعث مشکل می‌شود

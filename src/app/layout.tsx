@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
-import { Layout, FixedPlugin } from "@/components";
+import { Layout } from "@/components";
+import ContactFloatButton from "@/components/contact-float-button"; // import به همین شکل باقی می‌ماند
 
 const vazir = Vazirmatn({
   subsets: ["arabic"],
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body className="font-vazir">
         <Layout>
           {children}
-          <FixedPlugin />
+          <ContactFloatButton />
         </Layout>
       </body>
     </html>

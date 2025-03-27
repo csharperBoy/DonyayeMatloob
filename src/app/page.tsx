@@ -3,6 +3,7 @@ import { Navbar, Footer } from "@/components";
 
 // sections
 import Hero from "./hero";
+//import AdvantagesSection from "./advantages"; // import به همین شکل باقی می‌ماند
 import TopBookCategories from "./therapy-services";
 import BackToSchoolBooks from "./online-courses";
 import OtherBookOffers from "./psychologists-team";
@@ -19,7 +20,7 @@ export default function Campaign() {
       <BackToSchoolBooks />
       <OtherBookOffers />
       <CarouselFeatures />
-      <GetYourBookFromUs />
+      <GetYourBookFromUs />      
       <Faq />
       <Footer />
     </>

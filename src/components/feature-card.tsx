@@ -1,5 +1,12 @@
+"use client";
 import React from 'react';
 import { Typography, Card, CardBody } from "@material-tailwind/react";
+
+const sharedProps = {
+  placeholder: undefined,
+  onPointerEnterCapture: undefined,
+  onPointerLeaveCapture: undefined
+};
 
 interface FeatureCardProps {
   title: string;
@@ -12,34 +19,24 @@ export function FeatureCard({ icon: Icon, title, children }: FeatureCardProps) {
     <Card 
       color="transparent" 
       shadow={false}
-      placeholder={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
+      className="hover:bg-gray-50 transition-all duration-300 rounded-xl"
+      {...sharedProps}
     >
-      <CardBody 
-        className="grid justify-center text-center"
-        placeholder={undefined}
-        onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined}
-      >
-        <div className="mx-auto mb-6 grid h-12 w-12 place-items-center rounded-lg bg-gray-900 p-2.5 text-white shadow">
-          <Icon className="h-5 w-5" />
+      <CardBody className="grid justify-center text-center p-6" {...sharedProps}>
+        <div className="mx-auto mb-6 grid h-14 w-14 place-items-center rounded-full bg-purple-100 p-3 text-purple-600 shadow-lg">
+          <Icon className="h-6 w-6" />
         </div>
         <Typography
           as="h5"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-          className="mb-2 text-xl font-bold text-blue-gray-900"
+          className="mb-3 text-xl font-bold text-gray-900"
+          {...sharedProps}
         >
           {title}
         </Typography>
         <Typography
           as="p"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-          className="px-8 font-normal text-gray-500"
+          className="font-normal text-gray-600 leading-relaxed"
+          {...sharedProps}
         >
           {children}
         </Typography>
