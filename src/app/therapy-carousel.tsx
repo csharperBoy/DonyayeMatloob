@@ -18,6 +18,16 @@ const sharedProps = {
 export function TherapyCarousel() {
   const slides = [
     {
+      title: "مجوزهای رسمی موسسه",
+      description: "موسسه دنیای مطلوب دارای کلیه مجوزهای رسمی از مراجع ذیصلاح کشور",
+      icon: <ShieldCheckIcon className="h-8 w-8 text-white" />,
+      image: "/image/carousel/2.jpg",
+      licenses: [
+        "مجوز رسمی از سازمان نظام روانشناسی",
+        "پروانه فعالیت از وزارت بهداشت",
+        "عضویت در انجمن روانشناسی ایران"
+      ]
+    },{
       title: "مشاوره تخصصی با روانشناسان مجرب",
       description: "جلسات مشاوره فردی، زوجی و خانوادگی با متخصصان دارای پروانه رسمی از سازمان نظام روانشناسی",
       icon: <UserGroupIcon className="h-8 w-8 text-white" />,
@@ -28,17 +38,7 @@ export function TherapyCarousel() {
         "گواهینامه‌های تخصصی"
       ]
     },
-    {
-      title: "مجوزهای رسمی موسسه",
-      description: "موسسه دنیای مطلوب دارای کلیه مجوزهای رسمی از مراجع ذیصلاح کشور",
-      icon: <ShieldCheckIcon className="h-8 w-8 text-white" />,
-      image: "/image/carousel/2.jpg",
-      licenses: [
-        "مجوز رسمی از سازمان نظام روانشناسی",
-        "پروانه فعالیت از وزارت بهداشت",
-        "عضویت در انجمن روانشناسی ایران"
-      ]
-    },
+    
     {
       title: "همکاری با مراکز معتبر",
       description: "همکاری با دانشگاه‌ها و مراکز علمی معتبر کشور در زمینه آموزش و پژوهش",
