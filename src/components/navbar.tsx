@@ -182,6 +182,7 @@ export function Navbar() {
             placeholder={undefined}
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
+            onClick={() => window.location.href = "/appointment"}
           >
             نوبت‌دهی
           </Button>

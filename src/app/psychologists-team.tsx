@@ -12,12 +12,12 @@ const sharedProps = {
 const PSYCHOLOGISTS = [
   {
     image: "/image/psychologists/1.jpg",
-    name: "دکتر نگار احمدی",
-    specialty: "روانشناس بالینی",
+    name: "دکتر عارفه سادات جان نثار",
+    specialty: "روانشناس کودک و نوجوان",
     experience: "15",
-    description: "دکترای روانشناسی بالینی از دانشگاه تهران، متخصص در درمان اختلالات اضطرابی و افسردگی با رویکرد CBT و طرحواره درمانی",
+    description: "کارناسی ارشد روانشناسی تربیتی از دانشگاه پیام نور، متخصص در درمان اختلالات اضطرابی و افسردگی با رویکرد CBT و طرحواره درمانی",
     availableFor: ["اضطراب", "افسردگی", "وسواس", "اختلالات خواب", "مدیریت استرس"],
-    sessionPrice: "550,000",
+    sessionPrice: "950,000",
     isOnline: true
   },
   {
@@ -32,7 +32,7 @@ const PSYCHOLOGISTS = [
   },
   {
     image: "/image/psychologists/3.png",
-    name: "دکتر مریم سلیمانی",
+    name: "دکتر کبری سلیمانی",
     specialty: "مشاور خانواده",
     experience: "8",
     description: "کارشناسی ارشد مشاوره خانواده از دانشگاه شهید بهشتی، متخصص در زوج درمانی و مشاوره پیش از ازدواج",
